@@ -53,27 +53,27 @@
         <div class="chat-content">
             <div class="msg-row">
                 <img src="avatar.jpg" class="avatar"> <div class="msg-bubble">安安~ 約會嗎 哥哥幾歲啦？</div>
-                <div class="msg-info">下午2:30</div>
+                <div class="msg-info time-now"></div>
             </div>
 
             <div class="msg-row">
                 <img src="avatar.jpg" class="avatar">
                 <div class="msg-bubble">只進入身體 不觸碰生活噢</div>
-                <div class="msg-info">下午2:30</div>
+                <div class="msg-info time-now"></div>
             </div>
 
             <div class="msg-row">
                 <img src="avatar.jpg" class="avatar">
                 <div class="msg-bubble">
-                    這麼巧，妹妹正好在附近喔
+                    這麼巧，妹妹正好在附近
                     <img src="beauty.jpg" class="content-img"> </div>
-                <div class="msg-info">下午2:31</div>
+                <div class="msg-info time-now"></div>
             </div>
 
             <div class="msg-row">
                 <img src="avatar.jpg" class="avatar">
-                <div class="msg-bubble">添加賴我发信息喔 👇</div>
-                <div class="msg-info">下午2:31</div>
+                <div class="msg-bubble">添加賴給我发信息喔 👇</div>
+                <div class="msg-info time-now"></div>
             </div>
         </div>
 
@@ -84,5 +84,21 @@
         </div>
     </div>
 
+    <script>
+        (function() {
+            const now = new Date();
+            let hours = now.getHours();
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const ampm = hours >= 12 ? '下午' : '上午';
+            hours = hours % 12;
+            hours = hours ? hours : 12; 
+            const timeStr = ampm + hours + ':' + minutes;
+            
+            const timeElements = document.querySelectorAll('.time-now');
+            timeElements.forEach(el => {
+                el.innerText = timeStr;
+            });
+        })();
+    </script>
 </body>
 </html>
